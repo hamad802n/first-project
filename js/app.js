@@ -43,5 +43,14 @@ if
 */
 function stuffiInUrWay() {
 
-let ObstacleSize = Math.round(Math.radnom() * 10);
+let ObstacleSize = Math.round(Math.random() + 10);
+
+const newObstacleElemnt = document.createElement('div')
+newObstacleElemnt.classList.add('box')
+newObstacleElemnt.style.width = size + "10px"
+newObstacleElemnt.style.height = size + "20px"
+
+
+
+
 }
