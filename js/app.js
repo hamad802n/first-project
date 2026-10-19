@@ -1,17 +1,17 @@
 const ballS = 40
 const gameWidth = 800
 const  ballLeft = 60
-const gravity= 0.8
-const jumpPower = 14
-const obstacle = 6
-const win = 30
+const gravity=  0.1
+const jumpPower = 0
+const obstacleSize = 6
+const win = 30000
 
 
 ///varaibles dont forget nor get confuced 
 
 let ballY = 0
 let velocityY = 0
-let obstacles = []
+let obstacles =  ['', '', '', '', '', '', '', '', '', '', '']
 let spawnCountdown
 let isGameOver = false 
 let gameLoopId
@@ -58,7 +58,7 @@ function stuffiInUrWay() {
 
     const newObstacleElemnt = document.createElement('div')
     newObstacleElemnt.classList.add('box')
-    newObstacleElemnt.style.width = size + 10 + 'px'
+    newObstacleElemnt.style.width = size + 20 + 'px'
     newObstacleElemnt.style.height = size + 20 + 'px'
 
     gameElement.appendChild(newObstacleElemnt)
@@ -75,17 +75,39 @@ function stuffiInUrWay() {
 function startGame(){
 
     gameElement.addEventListener('click',jumps)
-
+ gameElement.addEventListener('spaceBar',jumps)
 
 setInterval(ballMoving,20)
 console.log(gameElement)
 }
 
-function spawnBox(){
+function spawObstacles(){
+    for(let i = 0; i < obstacles.length; i++){
+        if (obstacles[i] !== ''){
+obstacles[i].style.left = i * slotWidth + 'px'
+
+        }
+    }
 
 
 
 }
+
+function obstacleStep(){
+
+    moveObstacles()
+    drawObstacles()
+
+}
+function checkIfThereIsCrash(){
+
+
+
+    if ((obstacles[1] !== '' || obstacles [0] !== '') && ballY < obstacleSize) {
+        endGame ('GAME OVER')
+    }
+}
+
 
 //  Event Listeners 
 
