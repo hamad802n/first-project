@@ -98,6 +98,29 @@ main{
     position:
      absolute;
     bottom: 0;
+    margin-bottom: 20px;
+
     background-color: black;
 
+}
+#timer{
+    margin-top: 20px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: rgb(194, 24, 24);
+}
+#restart-button{
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-family: inherit;
+    font-size: 20px;
+    background-color: transparent;
+    border: 1px solid rgba(0,0,0,.5);
+    border-radius: 8px;
+}
+ 
+#restart-button:hover{
+    cursor: pointer;
+    background-color: rgba(0,0,0,.1);
 }

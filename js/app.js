@@ -107,6 +107,34 @@ function checkIfThereIsCrash(){
         endGame ('GAME OVER')
     }
 }
+function gameLoop(){
+
+    ballMoving()
+    checkCollision()
+
+}
+function updateTimer(){
+
+    timeLeft: any
+    timerElement.textContent = timeLeft
+    if 
+    (timeLeft === 0){
+        endGame(' You won')
+
+    }
+    function endGame(message){
+
+
+        isGameOver = true
+        clearInterval(gameLoopId)
+        clearInterval(obstacleLoopId)
+        clearInterval(timerId)
+
+        messageElement.textContent = message
+        
+    }
+
+}
 
 
 //  Event Listeners 
