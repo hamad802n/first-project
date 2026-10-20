@@ -221,12 +221,22 @@ function handleKeyDown(event){
 }
 
 
+function restartGame(){
+    clearInterval(gameLoopId)
+    clearInterval(obstacleLoopId)
+    clearInterval(timerId)
+
+    startGame()
+
+
+}
+
 //  Event Listeners
 
 gameElement.addEventListener('click',jumps)
 document.addEventListener('keydown',handleKeyDown)
-restartButtonElement.addEventListener('click',startGame)
+restartButtonElement.addEventListener('click',restartGame)
 
-startGame()
 
+ startGame()
 
