@@ -9,6 +9,8 @@ const win = 30
 const slotWidth = 80
 const lastSlot = 10
 
+const jumpSound = new Audio('sounds/jump.mp3')
+
 
 ///varaibles dont forget nor get confuced 
 
@@ -44,6 +46,10 @@ function jumps(){
     if
     (ballY === 0 && isGameOver === false) {
         velocityY = jumpPower
+
+
+          jumpSound.currentTime = 0
+        jumpSound.play()
     }
 }
 
