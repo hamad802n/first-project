@@ -1,10 +1,10 @@
 const ballS = 40
 const gameWidth = 800
 const  ballLeft = 60
-const gravity=  0.1
-const jumpPower = 0
-const obstacleSize = 6
-const win = 30000
+const gravity= 0.8
+const jumpPower = 12
+const obstacleSize = 40
+const win = 2000
 
 
 ///varaibles dont forget nor get confuced 
@@ -72,14 +72,10 @@ function stuffiInUrWay() {
 
 
 
-function startGame(){
 
-    gameElement.addEventListener('click',jumps)
- gameElement.addEventListener('spaceBar',jumps)
 
-setInterval(ballMoving,20)
-console.log(gameElement)
-}
+  
+
 
 function spawObstacles(){
     for(let i = 0; i < obstacles.length; i++){
@@ -95,11 +91,11 @@ obstacles[i].style.left = i * slotWidth + 'px'
 
 function obstacleStep(){
 
-    moveObstacles()
+    stuffiInUrWay() 
     drawObstacles()
 
 }
-function checkIfThereIsCrash(){
+function IfThereIsCrash(){
 
 
 
@@ -110,12 +106,12 @@ function checkIfThereIsCrash(){
 function gameLoop(){
 
     ballMoving()
-    checkCollision()
+    IfThereIsCrash()
 
 }
 function updateTimer(){
 
-    timeLeft: any
+    timeLeft -- 
     timerElement.textContent = timeLeft
     if 
     (timeLeft === 0){
@@ -131,15 +127,46 @@ function updateTimer(){
         clearInterval(timerId)
 
         messageElement.textContent = message
-        
+        restartButtonElement.classList.remove('hidden')
     }
 
 }
+function startGame(){
+
+for(let oneObstacle of obstacles){
+
+    for (let oneObstacle of obstacles){
+        if(oneObstacle !== ''){
+            oneObstacle.style.display = 'none'
+        }
+    }
+}
+
+}
+
+ ballY = 0
+    velocityY = 0
+    obstacles = ['', '', '', '', '', '', '', '', '', '', '']
+    spawnCountdown = 3
+    timeLeft = win
+    isGameOver = false
+
+    ballElement.style.bottom = '0px'
+    timerElement.textContent = timeLeft
+    messageElement.textContent = ''
+    restartButtonElement.classList.add('hidden')
+
+    gameLoopId = setInterval(gameLoop,20)
+    obstacleLoopId = setInterval(obstacleStep,200)
+    timerId = setInterval(updateTimer)
 
 
 //  Event Listeners 
 
-gameElement.addEventListener('click',jumps)
+  gameElement.addEventListener('click',jumps)
+ gameElement.addEventListener('spaceBar',jumps)
+
+setInterval(ballMoving,20)
+console.log(gameElement)
 
 
-startGame()

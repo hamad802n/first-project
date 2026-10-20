@@ -10,26 +10,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Isometra&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
-        <h1>run game</h1>
-        <p> (instructions)
-            press to start arrow or space to jump </p>
-      
+        <h1>bull Runner</h1>
+        <p id="instructions">Press SPACE or click to jump. Survive 30 seconds to win.</p>
+        <p id="message"></p>
     </header>
     <main>
-
-
-<button id="play-again">play again</button>
-   
-   <div id="game">
-    
-<div id="ball"> 
-
-    <p id="timer">30</p>
- </main>
-</div>
-   </div>
-   
+        <div id="game">
+            <div id="ball"></div>
+        </div>
+        <button id="restart-button" class="hidden">Play Again</button>
+        <p id="timer">30</p>
+    </main>
 </body>
 </html>
