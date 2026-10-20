@@ -99,12 +99,12 @@ main{
 
  
 .box{
-    position:
-     absolute;
+    position: absolute;
     bottom: 0;
-    margin-bottom: 20px;
-
-    background-color: black;
+    border: 23.48px solid black;
+    padding: 20px;
+    
+    background-color: rgb(232, 0, 0);
 
 }
 #timer{

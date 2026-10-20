@@ -2,9 +2,12 @@ const ballS = 40
 const gameWidth = 800
 const  ballLeft = 60
 const gravity= 0.8
-const jumpPower = 12
+const jumpPower = 20
 const obstacleSize = 40
-const win = 2000
+const win = 30
+
+const slotWidth = 80
+const lastSlot = 10
 
 
 ///varaibles dont forget nor get confuced 
@@ -22,7 +25,11 @@ let timerId
 const gameElement = document.querySelector('#game')
 const ballElement = document.querySelector('#ball')
 const timerElement = document.querySelector('#timer')
+
+
+
 const messageElement = document.querySelector('#message')
+
 const restartButtonElement = document.querySelector('#restart-button')
 
 
@@ -53,26 +60,57 @@ if
 }
 ballElement.style.bottom = ballY + 'px'
 }
-function stuffiInUrWay() {
-    const size = Math.round(Math.random() * 10)
+function stuffInUrWay() {
+   const newObstacleElemnt = document.createElement('div')
 
-    const newObstacleElemnt = document.createElement('div')
-    newObstacleElemnt.classList.add('box')
-    newObstacleElemnt.style.width = size + 20 + 'px'
-    newObstacleElemnt.style.height = size + 20 + 'px'
+ newObstacleElemnt.classList.add('box')
+ 
+       
+newObstacleElemnt.style.height = obstacleSize + 'px'
+      newObstacleElemnt.style.left = lastSlot * slotWidth + 'px'
 
     gameElement.appendChild(newObstacleElemnt)
 
-    obstacles.push({
-        gameElement: newObstacleElemnt,
-        x: gameWidth,
-        size: size
-    })
+    obstacles.push(newObstacleElemnt)
+        
+        
+    }
+
+
+function moveObstacles(){
+
+
+
+if (obstacles [0] !== '') {
+
+    obstacles[0].style.display = 'none'
+
+
+
+
+
+
+}
+ obstacles.shift()
+spawnCountdown--
+if 
+
+
+(spawnCountdown <=0){
+stuffInUrWay()
+
+spawnCountdown = Math.floor(Math.random()* 4) + 5
+
 }
 
+else{
+
+obstacles.push('')
 
 
+}
 
+}
 
   
 
@@ -89,9 +127,28 @@ obstacles[i].style.left = i * slotWidth + 'px'
 
 }
 
+
+
+
+
+function drawObstacles(){
+    
+    for(let i = 0; i < obstacles.length; i++){
+        if(obstacles[i] !== ''){
+            obstacles[i].style.left = i * slotWidth + 'px'
+            obstacles[i].style.display = 'block'
+
+        }
+
+    }
+}
+
+
+
+
 function obstacleStep(){
 
-    stuffiInUrWay() 
+    moveObstacles() 
     drawObstacles()
 
 }
@@ -118,7 +175,10 @@ function updateTimer(){
         endGame(' You won')
 
     }
-    function endGame(message){
+   
+
+}
+ function endGame(message){
 
 
         isGameOver = true
@@ -129,22 +189,14 @@ function updateTimer(){
         messageElement.textContent = message
         restartButtonElement.classList.remove('hidden')
     }
-
-}
 function startGame(){
-
-for(let oneObstacle of obstacles){
-
-    for (let oneObstacle of obstacles){
+    for(let oneObstacle of obstacles){
         if(oneObstacle !== ''){
-            oneObstacle.style.display = 'none'
+        oneObstacle.style.display = 'none'
         }
     }
-}
 
-}
-
- ballY = 0
+    ballY = 0
     velocityY = 0
     obstacles = ['', '', '', '', '', '', '', '', '', '', '']
     spawnCountdown = 3
@@ -158,15 +210,23 @@ for(let oneObstacle of obstacles){
 
     gameLoopId = setInterval(gameLoop,20)
     obstacleLoopId = setInterval(obstacleStep,200)
-    timerId = setInterval(updateTimer)
+    timerId = setInterval(updateTimer,1000)
+}
+
+function handleKeyDown(event){
+    if(event.code === 'Space' || event.code === 'ArrowUp'){
+        event.preventDefault()
+        jumps()
+    }
+}
 
 
-//  Event Listeners 
+//  Event Listeners
 
-  gameElement.addEventListener('click',jumps)
- gameElement.addEventListener('spaceBar',jumps)
+gameElement.addEventListener('click',jumps)
+document.addEventListener('keydown',handleKeyDown)
+restartButtonElement.addEventListener('click',startGame)
 
-setInterval(ballMoving,20)
-console.log(gameElement)
+startGame()
 
 
