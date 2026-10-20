@@ -48,8 +48,7 @@ function jumps(){
         velocityY = jumpPower
 
 
-          jumpSound.currentTime = 0
-        jumpSound.play()
+         
     }
 }
 
@@ -194,6 +193,8 @@ function updateTimer(){
 
         messageElement.textContent = message
         restartButtonElement.classList.remove('hidden')
+         jumpSound.currentTime = 0
+        jumpSound.play()
     }
 function startGame(){
     for(let oneObstacle of obstacles){
