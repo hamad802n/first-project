@@ -99,12 +99,15 @@ main{
 
  
 .box{
+ 
     position: absolute;
     bottom: 0;
-    border: 23.48px solid black;
-    padding: 20px;
-    
-    background-color: rgb(232, 0, 0);
+    padding: 40px;
+
+    background-image: url('../images/wall.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
 
 }
 #timer{
